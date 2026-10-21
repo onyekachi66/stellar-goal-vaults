@@ -227,7 +227,7 @@ reports `MISS` for a fresh read and `HIT` for a cached one; cached payloads are 
 
 **Response `400 Bad Request`** for a malformed ID, **`404 Not Found`** when the campaign does
 not exist, and **`500`** with a generic error body (no storage or stack details) when the
-underlying read fails.
+underlying read fails. Known error paths return the standard error envelope `{ "success": false, "error": { "code": string, "message": string, "requestId": string, "details"?: array } }` while unexpected failures log structured context without leaking internals.
 
 ---
 
